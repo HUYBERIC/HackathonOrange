@@ -1,0 +1,19 @@
+.first-section-result{
+  margin-bottom: 20px;
+  .container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 30px;
+    .result-container{
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+      background-color: $second-color;
+      padding: 10px;
+      border-radius: 20px;
+    }
+  }
+}

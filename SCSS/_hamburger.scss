@@ -27,7 +27,7 @@
 /***** Collapse Animation *****/
 
 .bar--top {
-  bottom: calc(50% + 11px + 4px/ 2);
+  bottom: calc(50% + 6px + 4px/ 2);
   transition-property: bottom,margin,transform;
   transition-delay: calc(0s + 0.35s),0s,0s;
 }
@@ -40,7 +40,7 @@
 }
 
 .bar--bottom {
-  top: calc(50% + 11px + 4px/ 2);
+  top: calc(50% + 6px + 4px/ 2);
   transition-property: top,transform;
   transition-delay: 0s;
 }
