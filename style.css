@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Tilt+Prism&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+html {
+  overflow-x: hidden;
+  height: 100%;
+}
+
+body {
+  background: #D9D9D9;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  font-family: black;
+  min-height: 100vh;
+}
+
+section {
+  width: 100vw;
+}
+
+.container {
+  width: 100vw;
+  max-width: 1080px;
+}
+
+span {
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black;
+}
+
+::-webkit-scrollbar-track {
+  background-color: black;
+}/*# sourceMappingURL=style.css.map */
