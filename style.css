@@ -191,7 +191,14 @@ header .container .hamburger label {
   align-items: center;
   background-color: #F8A763;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 5vw;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+.first-section-result .container img {
+  width: 40px;
+}
+.first-section-result .container .emoji-wait {
+  width: 20px;
 }
 
 footer .container {
