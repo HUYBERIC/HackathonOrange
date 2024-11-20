@@ -149,7 +149,7 @@ header .container .hamburger label {
   width: 25px;
   z-index: 2;
 }
-header .container .hamburger .overlay {
+header .container .overlay {
   position: absolute;
   top: 0;
   right: 0;
@@ -162,7 +162,7 @@ header .container .hamburger .overlay {
   align-items: flex-start;
   justify-content: center;
 }
-header .container .hamburger .overlay .menu {
+header .container .overlay .menu {
   margin-top: 120px;
   display: flex;
   flex-direction: column;
@@ -170,7 +170,7 @@ header .container .hamburger .overlay .menu {
   justify-content: center;
   gap: 20px;
 }
-header .container .hamburger .overlay .menu h3 {
+header .container .overlay .menu h3 {
   text-align: center;
   font-size: 2rem;
   color: #DEDEDE;
@@ -178,18 +178,18 @@ header .container .hamburger .overlay .menu h3 {
   font-family: "Chivo";
   text-transform: uppercase;
 }
-header .container .hamburger .overlay .menu .text {
+header .container .overlay .menu .text {
   padding: 10px 20px;
   font-family: "Chivo";
   font-weight: 200;
   font-size: 1rem;
   color: white;
 }
-header .container .hamburger .overlay .menu .text span {
+header .container .overlay .menu .text span {
   color: #E98A3A;
   font-weight: 800;
 }
-header .container .hamburger .overlay .menu .social {
+header .container .overlay .menu .social {
   display: flex;
   gap: 50px;
 }
