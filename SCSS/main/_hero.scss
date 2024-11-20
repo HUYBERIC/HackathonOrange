@@ -13,17 +13,50 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: $second-color;
+      /* background-color: $second-color; */
+      background: linear-gradient(45deg, $main-color 0%, $second-color 60%);
       border-radius: 50%;
       height: 12rem;
       width: 12rem;
       box-shadow: 5px 5px 12px 0px rgba(0, 0, 0, 0.25);
+      animation: rotate 1s linear;
       h2 {
         font-family: $font-title;
         font-size: 1.8rem;
         font-weight: 300;
         text-shadow: 4px 4px 5px rgba(0,0,0,0.3);
       }
+      .start{
+        animation: hide .5s linear;
+      }
     }
+  }
+}
+
+
+@keyframes rotate {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+@keyframes show {
+  0% {
+      opacity: 0%;
+  }
+  100% {
+      opacity: 100%;
+  }
+}
+
+@keyframes hide {
+  0% {
+      opacity: 100%;
+  }
+  100% {
+      opacity: 0%;
   }
 }

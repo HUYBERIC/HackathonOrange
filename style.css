@@ -153,7 +153,7 @@ header .container .overlay {
   position: absolute;
   top: 0;
   right: 0;
-  width: 100vw;
+  width: 0vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: brightness(50%) blur(5px);
@@ -161,14 +161,17 @@ header .container .overlay {
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  transition: all 0.3s ease-in-out;
 }
 header .container .overlay .menu {
   margin-top: 120px;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 20px;
+  opacity: 0;
+  transition: all 1s ease-in-out;
 }
 header .container .overlay .menu h3 {
   text-align: center;
@@ -178,8 +181,11 @@ header .container .overlay .menu h3 {
   font-family: "Chivo";
   text-transform: uppercase;
 }
+header .container .overlay .menu h3 i {
+  font-size: 16px;
+}
 header .container .overlay .menu .text {
-  padding: 10px 20px;
+  padding: 0px 20px;
   font-family: "Chivo";
   font-weight: 200;
   font-size: 1rem;
@@ -193,6 +199,7 @@ header .container .overlay .menu .social {
   display: flex;
   gap: 50px;
 }
+
 .hero .container {
   display: flex;
   justify-content: center;
@@ -204,11 +211,13 @@ header .container .overlay .menu .social {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #F8A763;
+  /* background-color: $second-color; */
+  background: linear-gradient(45deg, #E98A3A 0%, #F8A763 60%);
   border-radius: 50%;
   height: 12rem;
   width: 12rem;
   box-shadow: 5px 5px 12px 0px rgba(0, 0, 0, 0.25);
+  animation: rotate 1s linear;
 }
 .hero .container .button h2 {
   font-family: "Tomorrow";
@@ -216,7 +225,34 @@ header .container .overlay .menu .social {
   font-weight: 300;
   text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
 }
+.hero .container .button .start {
+  animation: hide 0.5s linear;
+}
 
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes show {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+@keyframes hide {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
 .first-section-result {
   margin: 30px 0 20px 0;
 }

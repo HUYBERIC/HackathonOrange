@@ -33,7 +33,7 @@ header{
       position: absolute;
       top: 0;
       right: 0;
-      width: 100vw;
+      width: 0vw;
       height: 100vh;
       background-color: rgba($color: #000000, $alpha: .2);
       backdrop-filter: brightness(50%)blur(5px);
@@ -41,13 +41,16 @@ header{
       display: flex;
       align-items: flex-start;
       justify-content: center;
+      transition: all 0.3s ease-in-out;
       .menu{
         margin-top: 120px;
-        display: flex;
+        display: none;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 20px;
+        opacity: 0;
+        transition: all 1s ease-in-out;
         h3{
           text-align: center;
           font-size: 2rem;
@@ -55,9 +58,12 @@ header{
           font-weight: 400;
           font-family: $font-text;
           text-transform: uppercase;
+          i{
+            font-size: 16px;
+          }
         }
         .text{
-          padding: 10px 20px;
+          padding: 0px 20px;
           font-family: $font-text;
           font-weight: 200;
           font-size: 1rem;
@@ -70,8 +76,6 @@ header{
         .social{
           display:flex;
           gap: 50px;
-          img{
-          }
         }
       }
     }
