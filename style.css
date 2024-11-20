@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Tilt+Prism&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -140,23 +140,66 @@ header .container .logo-header img {
   width: 35px;
 }
 header .container .title-header h1 {
-  font-family: "Tilt Prism";
+  font-family: "Tomorrow";
   font-size: clamp(40px, 10vw, 50px);
   color: #E98A3A;
   font-weight: 100;
 }
 header .container .hamburger label {
   width: 25px;
+  z-index: 2;
 }
-
+header .container .hamburger .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: brightness(50%) blur(5px);
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+header .container .hamburger .overlay .menu {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+header .container .hamburger .overlay .menu h3 {
+  text-align: center;
+  font-size: 2rem;
+  color: #DEDEDE;
+  font-weight: 400;
+  font-family: "Chivo";
+  text-transform: uppercase;
+}
+header .container .hamburger .overlay .menu .text {
+  padding: 10px 20px;
+  font-family: "Chivo";
+  font-weight: 200;
+  font-size: 1rem;
+  color: white;
+}
+header .container .hamburger .overlay .menu .text span {
+  color: #E98A3A;
+  font-weight: 800;
+}
+header .container .hamburger .overlay .menu .social {
+  display: flex;
+  gap: 50px;
+}
 .hero .container {
   display: flex;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(180deg, rgb(60, 60, 60) 30%, rgb(217, 217, 217) 30%);
+  background: linear-gradient(180deg, rgb(60, 60, 60) 50%, rgb(217, 217, 217) 50%);
 }
-
-.button {
+.hero .container .button {
   margin: 2rem auto;
   display: flex;
   justify-content: center;
@@ -167,21 +210,22 @@ header .container .hamburger label {
   width: 12rem;
   box-shadow: 5px 5px 12px 0px rgba(0, 0, 0, 0.25);
 }
-.button h2 {
-  font-family: "Chivo";
+.hero .container .button h2 {
+  font-family: "Tomorrow";
   font-size: 1.8rem;
-  font-weight: 200;
+  font-weight: 300;
   text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
 }
 
 .first-section-result {
-  margin-bottom: 20px;
+  margin: 30px 0 20px 0;
 }
 .first-section-result .container {
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 0 30px;
+  gap: 30px;
 }
 .first-section-result .container .result-container {
   display: flex;
@@ -190,15 +234,28 @@ header .container .hamburger label {
   gap: 8px;
   align-items: center;
   background-color: #F8A763;
-  padding: 10px;
+  padding: 20px 20px;
   border-radius: 5vw;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
 }
 .first-section-result .container img {
-  width: 40px;
+  width: 60px;
 }
 .first-section-result .container .emoji-wait {
-  width: 20px;
+  width: 40px;
+}
+
+.second-section-map .container {
+  border-radius: 20px;
+  width: 100vw;
+}
+.second-section-map .container img {
+  height: 250px;
+  width: auto;
+  filter: blur(2px);
+  width: 100%;
+  object-fit: cover;
+  margin-top: 50px;
 }
 
 footer .container {
@@ -223,7 +280,7 @@ footer .container .first-footer-section .logo-footer img {
   height: 18px;
 }
 footer .container .first-footer-section .title-footer h1 {
-  font-family: "Tilt Prism";
+  font-family: "Tomorrow";
   font-size: clamp(20px, 5vw, 25px);
   color: #E98A3A;
   font-weight: 100;

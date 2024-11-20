@@ -1,0 +1,14 @@
+.second-section-map{
+  .container{
+    border-radius: 20px;
+    width: 100vw;
+    img{
+      height: 250px;
+      width: auto;
+      filter: blur(2px);
+      width: 100%;
+      object-fit: cover;
+      margin-top: 50px;
+    }
+  }
+}
