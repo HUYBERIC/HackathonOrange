@@ -48,15 +48,15 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 15px;
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: black;
+  display: none;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: black;
+  display: none;
 }
 
 /* From Uiverse.io by vk-uiux */
@@ -283,15 +283,15 @@ header .container .overlay .menu .social {
 
 .second-section-map .container {
   border-radius: 20px;
-  width: 100vw;
+  height: 335px;
 }
 .second-section-map .container img {
-  height: 250px;
+  height: 100%;
   width: auto;
   filter: blur(2px);
   width: 100%;
   object-fit: cover;
-  margin-top: 50px;
+  padding-top: 50px;
 }
 
 footer .container {
