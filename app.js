@@ -1,6 +1,7 @@
 /* D O M  C O N T E N T   L O A D */
 
 document.addEventListener('DOMContentLoaded', function () {
+
   /* H A M B U R G E R */
 
   const hamburger = document.querySelector('.hamburger input#checkbox');
@@ -69,10 +70,36 @@ document.addEventListener('DOMContentLoaded', function () {
   descrBtn.addEventListener('click', toggleDesc);
   commentBtn.addEventListener('click', toggleComment);
 
+  /* S H O W   M A P */
+
+  const mapFrame = document.querySelector('.img-frame');
+  
+  function showMap(){
+    setTimeout(() => {
+      mapFrame.src = 'https://www.openstreetmap.org/export/embed.html?bbox=2.2831706786809596%2C48.81550339197041%2C2.2968293213190405%2C48.82449660802959&layer=mapnik';
+  }, 600);
+  }
+
   /* B U T T O N   A C T I V A T I O N */
 
   const bigBtn = document.querySelector('.button');
-  bigBtn.addEventListener('click', GetLocationApi);
+  bigBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    GetLocationApi();
+    showMap();
+});
+
+/* A N I M A T I O N S */
+
+const start = document.querySelector('.start');
+const result = document.querySelector('.result');
+
+bigBtn.addEventListener('click', () => {
+  bigBtn.classList.add('button-animate');
+  start.classList.add('start-animate');
+  result.classList.add('result-animate');
+  result.classList.remove('hidden');
+})
 
   /* F U N C T I O N S */
 

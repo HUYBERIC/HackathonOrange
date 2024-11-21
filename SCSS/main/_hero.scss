@@ -49,14 +49,17 @@
   }
   100% {
       opacity: 100%;
+      transform: translateX(-40px);
   }
 }
 
 @keyframes hide {
   0% {
       opacity: 100%;
+      transform: translateX(40px);
   }
   100% {
       opacity: 0%;
+      transform: translateX(60px);
   }
 }

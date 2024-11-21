@@ -2,13 +2,12 @@
   .container{
     border-radius: 20px;
     height: 335px;
-    img{
-      height: 100%;
-      width: auto;
-      filter: blur(2px);
-      width: 100%;
-      object-fit: cover;
-      padding-top: 50px;
+    padding-top: 50px;
+    .img-frame{
+      display: block;
+      border: none;
+      outline: none;
+      box-shadow: none;
     }
   }
 }

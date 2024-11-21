@@ -243,14 +243,17 @@ header .container .overlay .menu .social {
   }
   100% {
     opacity: 100%;
+    transform: translateX(-40px);
   }
 }
 @keyframes hide {
   0% {
     opacity: 100%;
+    transform: translateX(40px);
   }
   100% {
     opacity: 0%;
+    transform: translateX(60px);
   }
 }
 .first-section-result {
@@ -284,14 +287,13 @@ header .container .overlay .menu .social {
 .second-section-map .container {
   border-radius: 20px;
   height: 335px;
-}
-.second-section-map .container img {
-  height: 100%;
-  width: auto;
-  filter: blur(2px);
-  width: 100%;
-  object-fit: cover;
   padding-top: 50px;
+}
+.second-section-map .container .img-frame {
+  display: block;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 footer .container {
