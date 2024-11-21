@@ -162,11 +162,11 @@ bigBtn.addEventListener('click', () => {
 
       console.log('Closest Antenna:', closestAntenna);
 
-      SMSColor(closestAntenna);
-      CALLColor(closestAntenna);
-      WEBColor(closestAntenna);
+      SMSColor(closestAntenna.distance);
+      CALLColor(closestAntenna.distance);
+      WEBColor(closestAntenna.distance);
       ChangeMapLocation(locationData.area.center.latitude,locationData.area.center.longitude);
-      SetArea(closestAntenna.lat,closestAntenna.lon,closestAntenna.distance);
+      SetArea(closestAntenna.lat,closestAntenna.lon,closestAntenna.range);
 
     } catch (error) {
       console.error('Error:', error);
@@ -228,7 +228,8 @@ bigBtn.addEventListener('click', () => {
       if (distance < minDistance) {
         minDistance = distance;
         closest = {
-          distance: antenna.range,
+          distance: minDistance,
+          range: antenna.range,
           lat:antenna.lat,
           lon:antenna.lon
         };
@@ -287,18 +288,27 @@ bigBtn.addEventListener('click', () => {
     .openPopup();
   }
 
+  let markers = [];
+
   function SetArea(lat,lon,range)
   {
-    L.marker([lat,lon]).addTo(map)
+    markers.forEach(marker => (marker.remove()))
+    markers = [];
+
+    let marker = L.marker([lat,lon]).addTo(map)
     .bindPopup(`Antenna`)
     .openPopup();
 
     // Création d'une zone autour du point
-    L.circle([lat, lon], {
+    let circle = L.circle([lat, lon], {
       color: '#f57b42',        // Couleur de la bordure
       fillColor: '#f57b42',   // Couleur de remplissage
       fillOpacity: 0.2,     // Opacité du remplissage
       radius: range           // Rayon en mètres
     }).addTo(map);
+
+    markers.push(marker);
+    markers.push(circle);
   }
+
 });
