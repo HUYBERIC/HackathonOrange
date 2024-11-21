@@ -292,20 +292,12 @@ bigBtn.addEventListener('click', () => {
     }
   }
 
-  function ChangeMapLocation(lat,lon,msg = "YOU")
+  function ChangeMapLocation(lat,lon,msg = "Vous êtes ici")
   {
-    // Creates a red marker with the coffee icon
-    var greenIcon = new L.Icon({
-      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [41, 41]
-    });
+    
 
     map.setView([lat, lon], 13);
-    L.marker([lat,lon], {icon: greenIcon}).addTo(map)
+    L.marker([lat,lon]).addTo(map)
     .bindPopup(`${msg}`)
     .openPopup();
   }
@@ -317,14 +309,24 @@ bigBtn.addEventListener('click', () => {
     markers.forEach(marker => (marker.remove()))
     markers = [];
 
-    let marker = L.marker([lat,lon]).addTo(map)
-    .bindPopup(`Antenne la plus proche`)
+    // Creates a red marker with the coffee icon
+    var orangeIcon = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+
+    let marker = L.marker([lat,lon], {icon: orangeIcon}).addTo(map)
+    .bindPopup(`Antenne`)
     .openPopup();
 
     // Création d'une zone autour du point
     let circle = L.circle([lat, lon], {
-      color: '#f57b42',        // Couleur de la bordure
-      fillColor: '#f57b42',   // Couleur de remplissage
+      color: '#c2853a',        // Couleur de la bordure
+      fillColor: '#c2853a',   // Couleur de remplissage
       fillOpacity: 0.2,     // Opacité du remplissage
       radius: range           // Rayon en mètres
     }).addTo(map);

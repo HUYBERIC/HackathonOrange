@@ -30,10 +30,6 @@ body {
   align-items: center;
 }
 
-section {
-  width: 100vw;
-}
-
 .container {
   width: 100vw;
   max-width: 425px;
