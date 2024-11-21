@@ -294,8 +294,18 @@ bigBtn.addEventListener('click', () => {
 
   function ChangeMapLocation(lat,lon,msg = "YOU")
   {
+    // Creates a red marker with the coffee icon
+    var greenIcon = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+
     map.setView([lat, lon], 13);
-    L.marker([lat,lon]).addTo(map)
+    L.marker([lat,lon], {icon: greenIcon}).addTo(map)
     .bindPopup(`${msg}`)
     .openPopup();
   }
