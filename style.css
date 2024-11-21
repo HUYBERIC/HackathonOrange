@@ -211,22 +211,17 @@ header .container .overlay .menu .social {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: $second-color; */
   background: linear-gradient(45deg, #E98A3A 0%, #F8A763 60%);
   border-radius: 50%;
   height: 12rem;
   width: 12rem;
   box-shadow: 5px 5px 12px 0px rgba(0, 0, 0, 0.25);
-  animation: rotate 1s linear;
 }
 .hero .container .button h2 {
   font-family: "Tomorrow";
   font-size: 1.8rem;
   font-weight: 300;
   text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
-}
-.hero .container .button .start {
-  animation: hide 0.5s linear;
 }
 
 @keyframes rotate {
@@ -243,19 +238,28 @@ header .container .overlay .menu .social {
   }
   100% {
     opacity: 100%;
-    transform: translateX(-40px);
   }
 }
 @keyframes hide {
   0% {
     opacity: 100%;
-    transform: translateX(40px);
   }
   100% {
     opacity: 0%;
-    transform: translateX(60px);
   }
 }
+.button-animate {
+  animation: rotate 0.8s linear;
+}
+
+.start-animate {
+  animation: hide 0.8s linear forwards;
+}
+
+.result-animate {
+  animation: show 0.8s linear forwards;
+}
+
 .first-section-result {
   margin: 30px 0 20px 0;
 }
@@ -265,6 +269,7 @@ header .container .overlay .menu .social {
   align-items: center;
   padding: 0 30px;
   gap: 30px;
+  perspective: 1000px;
 }
 .first-section-result .container .result-container {
   display: flex;
@@ -284,16 +289,23 @@ header .container .overlay .menu .social {
   width: 40px;
 }
 
-.second-section-map .container {
-  border-radius: 20px;
-  height: 335px;
-  padding-top: 50px;
+@keyframes turn {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(360deg);
+  }
 }
-.second-section-map .container .img-frame {
-  display: block;
-  border: none;
-  outline: none;
-  box-shadow: none;
+.turn-card {
+  animation: turn 0.9s linear;
+}
+
+.second-section-map #map {
+  border-radius: 20px;
+  height: 283px;
+  margin-top: 50px;
+  z-index: -1;
 }
 
 footer .container {

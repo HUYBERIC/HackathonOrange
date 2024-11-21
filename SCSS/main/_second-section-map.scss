@@ -1,13 +1,8 @@
 .second-section-map{
-  .container{
+  #map{
     border-radius: 20px;
-    height: 335px;
-    padding-top: 50px;
-    .img-frame{
-      display: block;
-      border: none;
-      outline: none;
-      box-shadow: none;
-    }
+    height: 283px;
+    margin-top: 50px;
+    z-index: -1;
   }
 }

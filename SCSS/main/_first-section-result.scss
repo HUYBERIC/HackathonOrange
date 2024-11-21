@@ -6,6 +6,7 @@
     align-items: center;
     padding: 0 30px;
     gap: 30px;
+    perspective: 1000px;
     .result-container{
       display: flex;
       flex-direction: column-reverse;
@@ -24,4 +25,17 @@
       width: 40px;
     }
   }
+}
+
+@keyframes turn {
+  0%{
+    transform : rotateX(0deg);
+  }
+  100%{
+    transform : rotateX(360deg);
+  }
+}
+
+.turn-card{
+  animation : turn .9s linear;
 }

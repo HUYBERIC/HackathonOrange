@@ -1,13 +1,13 @@
 /* D O M  C O N T E N T   L O A D */
 
 document.addEventListener('DOMContentLoaded', function () {
-  let map = L.map('map').setView([51.50, -0.09], 13);
+  const map = L.map('map').setView([50.845686932330146, 4.357505411398796], 15);
   
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
   
-  L.marker([51.5, -0.09]).addTo(map)
+  L.marker([50.845686932330146, 4.357505411398796]).addTo(map)
   .bindPopup('A pretty CSS popup.<br> Easily customizable.')
   .openPopup();
 
@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /* B U T T O N   A C T I V A T I O N */
 
   const bigBtn = document.querySelector('.button');
+
   bigBtn.addEventListener('click', (e)=>{
     e.preventDefault();
     GetLocationApi();
@@ -103,12 +104,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const start = document.querySelector('.start');
 const result = document.querySelector('.result');
+const resContainer = document.querySelectorAll('.result-container');
+const msgContainer = document.querySelector('.msg-container');
+const callContainer = document.querySelector('.call-container');
+const webContainer = document.querySelector('.web-container');
 
 bigBtn.addEventListener('click', () => {
   bigBtn.classList.add('button-animate');
   start.classList.add('start-animate');
+  start.classList.add('hidden');
   result.classList.add('result-animate');
   result.classList.remove('hidden');
+  resContainer.forEach((e) => {
+    e.classList.add('turn-card')
+  });
 })
 
   /* F U N C T I O N S */
