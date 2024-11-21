@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }).addTo(map);
   
   L.marker([50.845686932330146, 4.357505411398796]).addTo(map)
-  .bindPopup('A pretty CSS popup.<br> Easily customizable.')
+  .bindPopup('Vous êtes ici')
   .openPopup();
 
 
@@ -83,12 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
   /* S H O W   M A P */
 
   const mapFrame = document.querySelector('.img-frame');
-  
-  function showMap(){
-    setTimeout(() => {
-      mapFrame.src = 'https://www.openstreetmap.org/export/embed.html?bbox=2.2831706786809596%2C48.81550339197041%2C2.2968293213190405%2C48.82449660802959&layer=mapnik';
-  }, 600);
-  }
 
   /* B U T T O N   A C T I V A T I O N */
 
@@ -97,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
   bigBtn.addEventListener('click', (e)=>{
     e.preventDefault();
     GetLocationApi();
-    showMap();
 });
 
 /* A N I M A T I O N S */
@@ -111,14 +104,24 @@ const webContainer = document.querySelector('.web-container');
 
 bigBtn.addEventListener('click', () => {
   bigBtn.classList.add('button-animate');
-  start.classList.add('start-animate');
-  start.classList.add('hidden');
+  start.classList.add('start-animate', 'hidden');
   result.classList.add('result-animate');
   result.classList.remove('hidden');
+  
   resContainer.forEach((e) => {
-    e.classList.add('turn-card')
+      e.classList.add('turn-card');
   });
-})
+
+  setTimeout(() => {
+      bigBtn.classList.remove('button-animate');
+      start.classList.remove('start-animate');
+      result.classList.remove('result-animate');
+      
+      resContainer.forEach((e) => {
+          e.classList.remove('turn-card');
+      });
+  }, 1000);
+});
 
   /* F U N C T I O N S */
 
@@ -305,7 +308,7 @@ bigBtn.addEventListener('click', () => {
     markers = [];
 
     let marker = L.marker([lat,lon]).addTo(map)
-    .bindPopup(`Antenna`)
+    .bindPopup(`Antenne la plus proche`)
     .openPopup();
 
     // Création d'une zone autour du point
