@@ -12,13 +12,22 @@ html {
   height: 100%;
 }
 
+.all {
+  width: 425px;
+  background-color: #D9D9D9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 body {
-  background: #D9D9D9;
+  background: black;
   color: black;
   display: flex;
   flex-direction: column;
   font-family: black;
   min-height: 100vh;
+  align-items: center;
 }
 
 section {
@@ -27,7 +36,8 @@ section {
 
 .container {
   width: 100vw;
-  max-width: 1080px;
+  max-width: 425px;
+  justify-self: center;
 }
 
 span {
@@ -249,15 +259,15 @@ header .container .overlay .menu .social {
   }
 }
 .button-animate {
-  animation: rotate 0.8s linear;
+  animation: rotate 1s linear;
 }
 
 .start-animate {
-  animation: hide 0.8s linear forwards;
+  animation: hide 1s linear forwards;
 }
 
 .result-animate {
-  animation: show 0.8s linear forwards;
+  animation: show 1s linear forwards;
 }
 
 .first-section-result {
@@ -279,7 +289,7 @@ header .container .overlay .menu .social {
   align-items: center;
   background-color: #F8A763;
   padding: 20px 20px;
-  border-radius: 5vw;
+  border-radius: 30px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
 }
 .first-section-result .container img {
@@ -298,14 +308,14 @@ header .container .overlay .menu .social {
   }
 }
 .turn-card {
-  animation: turn 0.9s linear;
+  animation: turn 1s linear;
 }
 
 .second-section-map #map {
   border-radius: 20px;
   height: 283px;
-  margin-top: 50px;
-  z-index: -1;
+  z-index: 0;
+  margin-top: 68px;
 }
 
 footer .container {
@@ -344,6 +354,6 @@ footer .container .second-footer-section .copyright {
 }
 footer .container .second-footer-section .copyright p {
   color: #D9D9D9;
-  font-size: 2vw;
+  font-size: 10px;
   text-align: right;
 }/*# sourceMappingURL=style.css.map */

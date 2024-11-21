@@ -57,11 +57,11 @@
 }
 
 .button-animate {
-  animation: rotate .8s linear;
+  animation: rotate 1s linear;
 }
 .start-animate {
-  animation: hide .8s linear forwards;
+  animation: hide 1s linear forwards;
 }
 .result-animate {
-  animation: show .8s linear forwards;
+  animation: show 1s linear forwards;
 }
