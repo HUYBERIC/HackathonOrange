@@ -1,6 +1,16 @@
 /* D O M  C O N T E N T   L O A D */
 
 document.addEventListener('DOMContentLoaded', function () {
+  let map = L.map('map').setView([51.50, -0.09], 13);
+  
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  
+  L.marker([51.5, -0.09]).addTo(map)
+  .bindPopup('A pretty CSS popup.<br> Easily customizable.')
+  .openPopup();
+
 
   /* H A M B U R G E R */
 
@@ -155,6 +165,8 @@ bigBtn.addEventListener('click', () => {
       SMSColor(closestAntenna);
       CALLColor(closestAntenna);
       WEBColor(closestAntenna);
+      ChangeMapLocation(locationData.area.center.latitude,locationData.area.center.longitude);
+      SetArea(closestAntenna.lat,closestAntenna.lon,closestAntenna.distance);
 
     } catch (error) {
       console.error('Error:', error);
@@ -216,12 +228,13 @@ bigBtn.addEventListener('click', () => {
       if (distance < minDistance) {
         minDistance = distance;
         closest = {
-          distance: minDistance,
-          antenna,
+          distance: antenna.range,
+          lat:antenna.lat,
+          lon:antenna.lon
         };
       }
     });
-    return closest.distance;
+    return closest;
   }
 
   function SMSColor(distance){
@@ -266,4 +279,26 @@ bigBtn.addEventListener('click', () => {
     }
   }
 
+  function ChangeMapLocation(lat,lon,msg = "YOU")
+  {
+    map.setView([lat, lon], 13);
+    L.marker([lat,lon]).addTo(map)
+    .bindPopup(`${msg}`)
+    .openPopup();
+  }
+
+  function SetArea(lat,lon,range)
+  {
+    L.marker([lat,lon]).addTo(map)
+    .bindPopup(`Antenna`)
+    .openPopup();
+
+    // Création d'une zone autour du point
+    L.circle([lat, lon], {
+      color: '#f57b42',        // Couleur de la bordure
+      fillColor: '#f57b42',   // Couleur de remplissage
+      fillOpacity: 0.2,     // Opacité du remplissage
+      radius: range           // Rayon en mètres
+    }).addTo(map);
+  }
 });
