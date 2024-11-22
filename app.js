@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', function () {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
   
-  L.marker([50.845686932330146, 4.357505411398796]).addTo(map)
+  const beCentralMarker = L.marker([50.845686932330146, 4.357505411398796]).addTo(map)
   .bindPopup('Vous êtes ici')
   .openPopup();
-
-
+  
+  
   /* H A M B U R G E R */
-
+  
   const hamburger = document.querySelector('.hamburger input#checkbox');
   const overlay = document.querySelector('.overlay');
   const menu = document.querySelector('.menu');
@@ -30,19 +30,19 @@ document.addEventListener('DOMContentLoaded', function () {
   const emojiSms = document.querySelector('.emoji-sms');
   const emojiCall = document.querySelector('.emoji-call');
   const emojiWeb = document.querySelector('.emoji-web');
-
+  
   function toggleMenu() {
     const isChecked = hamburger.checked;
     if (isChecked) {
       overlay.style.width = '100vw';
       menu.style.display = 'flex';
       menu.style.opacity = '1';
-
+      
       if (!descrText.classList.contains('hidden')) {
         descrText.classList.add('hidden');
         arrowDescr.className = 'bx bxs-down-arrow';
       }
-
+      
       if (!commentText.classList.contains('hidden')) {
         commentText.classList.add('hidden');
         arrowComment.className = 'bx bxs-down-arrow';
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
       arrowDescr.className = 'bx bxs-down-arrow';
     }
   }
-
+  
   function toggleComment() {
     const isCloseDesc = commentText.classList.contains('hidden');
     if (isCloseDesc) {
@@ -79,15 +79,15 @@ document.addEventListener('DOMContentLoaded', function () {
   hamburger.addEventListener('click', toggleMenu);
   descrBtn.addEventListener('click', toggleDesc);
   commentBtn.addEventListener('click', toggleComment);
-
+  
   /* S H O W   M A P */
-
+  
   const mapFrame = document.querySelector('.img-frame');
 
   /* B U T T O N   A C T I V A T I O N */
 
   const bigBtn = document.querySelector('.button');
-
+  
   bigBtn.addEventListener('click', (e)=>{
     e.preventDefault();
     GetLocationApi();
@@ -109,30 +109,30 @@ bigBtn.addEventListener('click', () => {
   result.classList.remove('hidden');
   
   resContainer.forEach((e) => {
-      e.classList.add('turn-card');
+    e.classList.add('turn-card');
   });
-
+  
   setTimeout(() => {
-      bigBtn.classList.remove('button-animate');
-      start.classList.remove('start-animate');
-      result.classList.remove('result-animate');
-      
-      resContainer.forEach((e) => {
-          e.classList.remove('turn-card');
-      });
+    bigBtn.classList.remove('button-animate');
+    start.classList.remove('start-animate');
+    result.classList.remove('result-animate');
+    
+    resContainer.forEach((e) => {
+      e.classList.remove('turn-card');
+    });
   }, 1000);
 });
 
-  /* F U N C T I O N S */
+/* F U N C T I O N S */
 
-  async function GetLocationApi() {
-    try {
-      // Fetch the token from your backend server
+async function GetLocationApi() {
+  try {
+    // Fetch the token from your backend server
       const tokenResponse = await fetch('http://localhost:3000/api/token');
       if (!tokenResponse.ok) throw new Error('Failed to fetch token');
       const tokenData = await tokenResponse.json();
       const accessToken = tokenData.access_token;
-
+      
       // Use the token to make the second API call
       const locationResult = await fetch(
         'https://api.orange.com/camara/location-retrieval/orange-lab/v0/retrieve',
@@ -148,30 +148,30 @@ bigBtn.addEventListener('click', () => {
           }),
         }
       );
-
+      
       if (!locationResult.ok) throw new Error('Failed to fetch location data');
       const locationData = await locationResult.json();
-
+      
       console.log(locationData);
       const userLat = locationData.area.center.latitude;
       const userLon = locationData.area.center.longitude;
-
+      
       const { minLat, minLon, maxLat, maxLon } = calculateBoundingCoordinates(
         userLat,
         userLon,
         500
       );
-
+      
       console.log(minLat, minLon, maxLat, maxLon);
 
       const openCellIdResult = await fetch(`https://opencellid.org/cell/getInArea?key=pk.d219afddac4c790d23e6fa6349243bbd&BBOX=${minLat},${minLon},${maxLat},${maxLon}&format=json&limit=1`);
 
       const openCellIdData = await openCellIdResult.json();
       console.log(openCellIdData);
-
+      
       // Calculate distance to each antenna and find the closest
       const closestAntenna = findClosestAntenna(userLat, userLon, openCellIdData.cells);
-
+      
       console.log('Closest Antenna:', closestAntenna);
 
       SMSColor(closestAntenna.distance);
@@ -179,16 +179,16 @@ bigBtn.addEventListener('click', () => {
       WEBColor(closestAntenna.distance);
       ChangeMapLocation(locationData.area.center.latitude,locationData.area.center.longitude);
       SetArea(closestAntenna.lat,closestAntenna.lon,closestAntenna.range);
-
+      
     } catch (error) {
       console.error('Error:', error);
     }
   }
-
+  
   function toRadians(degrees) {
     return (degrees * Math.PI) / 180;
   }
-
+  
   function toDegrees(radians) {
     return (radians * 180) / Math.PI;
   }
@@ -197,12 +197,12 @@ bigBtn.addEventListener('click', () => {
     const R = 6371000; // Earth's radius in meters
     const deltaLat = distance / R;
     const deltaLon = distance / (R * Math.cos(toRadians(lat)));
-
+    
     const maxLat = lat + toDegrees(deltaLat);
     const minLat = lat - toDegrees(deltaLat);
     const maxLon = lon + toDegrees(deltaLon);
     const minLon = lon - toDegrees(deltaLon);
-
+    
     return {
       minLat: minLat,
       minLon: minLon,
@@ -210,25 +210,25 @@ bigBtn.addEventListener('click', () => {
       maxLat: maxLat,
     };
   }
-
+  
   function haversine(lat1, lon1, lat2, lon2) {
     const R = 6371000; // Earth's radius in meters
     const dLat = toRadians(lat2 - lat1);
     const dLon = toRadians(lon2 - lon1);
     const a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(toRadians(lat1)) *
-        Math.cos(toRadians(lat2)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRadians(lat1)) *
+    Math.cos(toRadians(lat2)) *
+    Math.sin(dLon / 2) *
+    Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c; // Distance in meters
   }
-
+  
   function findClosestAntenna(userLat, userLon, antennas) {
     let closest = null;
     let minDistance = Infinity;
-
+    
     antennas.forEach((antenna) => {
       const distance = haversine(
         userLat,
@@ -236,7 +236,7 @@ bigBtn.addEventListener('click', () => {
         antenna.lat, // Assuming "lat" is the latitude key in the API response
         antenna.lon // Assuming "lon" is the longitude key in the API response
       );
-
+      
       if (distance < minDistance) {
         minDistance = distance;
         closest = {
@@ -249,7 +249,7 @@ bigBtn.addEventListener('click', () => {
     });
     return closest;
   }
-
+  
   function SMSColor(distance){
     if(distance >= 1000){
       smsCard.style.backgroundColor = '#FC0505'
@@ -294,21 +294,20 @@ bigBtn.addEventListener('click', () => {
 
   function ChangeMapLocation(lat,lon,msg = "Vous êtes ici")
   {
-    
-
     map.setView([lat, lon], 13);
     L.marker([lat,lon]).addTo(map)
     .bindPopup(`${msg}`)
     .openPopup();
   }
-
-  let markers = [];
-
+  
+  let markers = [beCentralMarker];
+  
+  
   function SetArea(lat,lon,range)
   {
     markers.forEach(marker => (marker.remove()))
     markers = [];
-
+    
     // Creates a red marker with the coffee icon
     var orangeIcon = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
@@ -318,11 +317,11 @@ bigBtn.addEventListener('click', () => {
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
-
+    
     let marker = L.marker([lat,lon], {icon: orangeIcon}).addTo(map)
     .bindPopup(`Antenne`)
     .openPopup();
-
+    
     // Création d'une zone autour du point
     let circle = L.circle([lat, lon], {
       color: '#c2853a',        // Couleur de la bordure
@@ -330,9 +329,9 @@ bigBtn.addEventListener('click', () => {
       fillOpacity: 0.2,     // Opacité du remplissage
       radius: range           // Rayon en mètres
     }).addTo(map);
-
+    
     markers.push(marker);
     markers.push(circle);
   }
-
+  
 });
