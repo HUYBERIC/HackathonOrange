@@ -6,7 +6,7 @@
 ---
 
 ### ✏️ **Description**
-This project was our very first **Use Case**, created as a team of four (Anthony, Thibault, Antoine, and myself) during a hackathon organized by Orange.  
+This project was our very first **Use Case**, created as a team of four (Anthony, Thibaut, Antoine, and myself) during a hackathon organized by Orange.  
 
 Our mission was to use one or more of Orange's APIs to address either a societal or environmental need. We decided to develop a **speedtest-like application** exclusively for mobile networks. This app measures the quality of:
 - SMS sending.
@@ -51,7 +51,7 @@ In the future, we hope to enhance this project by adding a **planning and intern
 ---
 
 ### ✏️ **Description**
-Ce projet représente notre tout premier **Use Case**, réalisé en équipe de quatre (Anthony, Thibault, Antoine et moi-même) lors d'un hackathon organisé par Orange.  
+Ce projet représente notre tout premier **Use Case**, réalisé en équipe de quatre (Anthony, Thibaut, Antoine et moi-même) lors d'un hackathon organisé par Orange.  
 
 Notre mission était d'utiliser une ou plusieurs APIs d'Orange pour répondre à un besoin sociétal ou environnemental. Nous avons choisi de développer une **application type speedtest**, exclusivement dédiée au réseau mobile, qui permet de mesurer la qualité :
 - De l'envoi de SMS.
